@@ -33,4 +33,9 @@ public class IplteamsService {
        String msg =iplDao.updateIplteam(iplteam);
        return msg;
     }
+
+    public String deleteteam(String teamName) throws SQLException, ClassNotFoundException {
+        String msg=iplDao.deleteteam(teamName);
+        return msg;
+    }
 }

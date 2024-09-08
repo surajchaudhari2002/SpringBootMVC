@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import java.sql.SQLException;
 import java.util.List;
 
-@RestController
+@RestController //use to return json.
+//@Controller  //use to return view it can be html jsp .
 
 public class MvcController {
     @Autowired
@@ -54,6 +55,12 @@ public class MvcController {
         @PutMapping("/updateteam")
     public String update(@RequestBody Iplteams iplteam) throws SQLException, ClassNotFoundException {
         String msg=iplteamsService.updateIplteam(iplteam);
+        return msg;
+        }
+
+        @DeleteMapping("/deleteteam/{teamName}")
+        public String deleteteam(@PathVariable String teamName) throws SQLException, ClassNotFoundException {
+        String msg=iplteamsService.deleteteam(teamName);
         return msg;
         }
 

@@ -61,4 +61,13 @@ public class IplDao {
         preparedStatement.executeUpdate();
         return "Updated Succesfully..!";
     }
+
+    public String deleteteam(String teamName) throws SQLException, ClassNotFoundException {
+        Connection connection=DbConnection.DbConnect();
+        PreparedStatement preparedStatement=connection.prepareStatement("delete from iplteams where teamName=?");
+        preparedStatement.setString(1,teamName);
+        preparedStatement.executeUpdate();
+        return "Deleted Succesfully..!";
+
+    }
 }
