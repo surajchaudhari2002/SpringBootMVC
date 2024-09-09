@@ -18,6 +18,10 @@ public class IplteamsService {
         return iplDao.getIplteams();
     }
 
+    public Iplteams getteam(String teamName) throws SQLException, ClassNotFoundException {
+        return iplDao.getteam(teamName);
+    }
+
     public String saveIplteam(Iplteams iplteam) throws SQLException, ClassNotFoundException {
         String msg=iplDao.addIplteams(iplteam);
         return msg;

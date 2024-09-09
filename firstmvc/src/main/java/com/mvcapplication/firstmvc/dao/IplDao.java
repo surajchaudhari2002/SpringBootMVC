@@ -70,4 +70,21 @@ public class IplDao {
         return "Deleted Succesfully..!";
 
     }
+
+    public Iplteams getteam(String teamName) throws SQLException, ClassNotFoundException {
+        Iplteams iplteam=null;
+        Connection connection=DbConnection.DbConnect();
+        PreparedStatement preparedStatement=connection.prepareStatement("select * from iplteams where teamName=?");
+        preparedStatement.setString(1,teamName);
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        while(resultSet.next()) {
+            String teamname = resultSet.getString("teamName");
+            String captainname = resultSet.getString("captainName");
+            int trophies = resultSet.getInt("trophies");
+
+            iplteam = new Iplteams(teamname, captainname, trophies);
+        }
+        return iplteam;
+    }
 }
