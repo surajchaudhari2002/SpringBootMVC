@@ -11,17 +11,18 @@ import org.springframework.web.bind.annotation.*;
 import java.sql.SQLException;
 import java.util.List;
 
-@RestController //use to return json.
-//@Controller  //use to return view it can be html jsp .
+//@RestController //use to return json.
+@Controller  //use to return view it can be html jsp .
 
 public class MvcController {
     @Autowired
     ProductService service;
     @Autowired
     IplteamsService iplteamsService;
-    @GetMapping()
+    @GetMapping ()
     public String hello(){
-        return "Hello Suraj";
+
+        return "iplteams";
         }
 
         @GetMapping("/products")
