@@ -5,6 +5,10 @@ import com.mvcapplication.firstmvc.entities.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 @Service
 public class EmployeeService {
     @Autowired
@@ -17,5 +21,20 @@ public class EmployeeService {
         else{
             return new ResponseEmployee(null,"Salary should be more than 50000");
         }
+    }
+
+    public ResponseEmployee getEmployeeByid(int id){
+        Optional<Employee> employee =employeeRepositery.findById(id);
+        if(employee.isPresent()){
+            return new ResponseEmployee(employee.get(),"Data Fetched Sucessfully..!");
+        }
+       else{
+           return new ResponseEmployee(null,"Employee not found for id "+id);
+        }
+    }
+
+    public List<Employee> getAllemployee(){
+        List<Employee> employees= employeeRepositery.findAll();
+        return employees;
     }
 }
