@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 
-public class EmployeeConroller {
+public class EmployeeController {
     @Autowired
     EmployeeService employeeService;
 
@@ -29,5 +29,10 @@ public class EmployeeConroller {
     @GetMapping("/getallemployee")
     public List<Employee> getAllemployee(){
         return employeeService.getAllemployee();
+    }
+
+    @GetMapping("/salary")
+    public List<Employee> getemployeeBetween(@RequestParam ("min") double min,@RequestParam ("max")double max){
+        return employeeService.getemployeeBetween(min, max);
     }
 }

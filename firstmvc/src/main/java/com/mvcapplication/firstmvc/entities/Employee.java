@@ -21,5 +21,5 @@ public class Employee {
     @Column(name="emp_adress")
     private  String adress;
 
-    private int emp_salary;
+    private int salary;
 }

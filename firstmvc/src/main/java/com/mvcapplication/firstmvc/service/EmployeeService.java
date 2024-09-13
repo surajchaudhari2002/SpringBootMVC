@@ -3,6 +3,7 @@ package com.mvcapplication.firstmvc.service;
 import com.mvcapplication.firstmvc.Repositery.EmployeeRepositery;
 import com.mvcapplication.firstmvc.entities.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ public class EmployeeService {
     @Autowired
     EmployeeRepositery employeeRepositery;
     public ResponseEmployee insertdata(Employee employee){
-        if(employee.getEmp_salary()>=50000) {
+        if(employee.getSalary()>=50000) {
             Employee employee1 = employeeRepositery.save(employee);//use to save object in databse
             return new ResponseEmployee(employee1,"Employee saved Sucessfully..!");
         }
@@ -36,5 +37,10 @@ public class EmployeeService {
     public List<Employee> getAllemployee(){
         List<Employee> employees= employeeRepositery.findAll();
         return employees;
+    }
+
+    public List<Employee> getemployeeBetween(double min , double max){
+        List<Employee> list= employeeRepositery.findBySalaryBetween(min , max);
+        return list;
     }
 }
